@@ -1,11 +1,14 @@
 from flask import Flask
 from flask import render_template
-#  https://pythonhosted.org/Flask-Scss/
-from flask.ext.scss import Scss
+
+#  https://sass.github.io/libsass-python/frameworks/flask.html
+from sassutils.wsgi import SassMiddleware
 
 app = Flask(__name__)
-Scss(app, static_dir='static', asset_dir='assets')
 
+app.wsgi_app = SassMiddleware(app.wsgi_app, {
+    'app': ('static/sass', 'static/css', '/static/css')
+})
 
 
 @app.route('/')
