@@ -10,7 +10,47 @@
 
 
   <body>
-    <p>Hello world</p>
+    <div class="font" style="background-image: url('{{ url_for('static', filename='images/landing.jpg') }}')";>
+      <div class="intro">
+        <h1 class="text-blue"> Simulateur de rentabilité locative </h1>
+        <h2> Estimez quel régime fiscal est le meilleur pour votre projet </h2>
+        <h3> Simulation gratuite et en temps réel</h3>
+      </div>
+        <a href="https://unsplash.com/@tup_s"><p class="auteur">Photo by Damien Tupinier on Unsplash</p></a>
+    </div>
+
+    <div class="kpi-section">
+      <div>
+        <div class="text-align">
+          <h2></h2>
+        </div>
+      </div>
+      <div class="flex_response kpi">
+        <div class="metric_box">
+          <span class="kpi-value" id="user">8000</span>
+          <p class="kpi-title">Utilisateurs</p>
+        </div>
+        <div class="metric_box">
+          <span class="kpi-value">20</span>
+          <p class="kpi-title">Pays</p>
+        </div>
+        <div class="metric_box">
+          <span class="kpi-value">5</span>
+          <p class="kpi-title">Ans d'activité</p>
+        </div>
+        <div class="metric_box">
+          <div style="display:flex;justify-content: center;"><span class="kpi-value">99</span> <span>%</span></div>
+          <p class="kpi-title">Satisfaction</p>
+        </div>
+      </div>
+      <p class="faker">Ces chiffres sont totalement faux</p>
+    </div>
+
+
+
+
+
+
 
   </body>
 </html>

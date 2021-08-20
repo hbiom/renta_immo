@@ -1,0 +1,30 @@
+.font {
+  width: 100%;
+  background-size: cover;
+  height: calc(100vh);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro {
+  width: 70%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background-color: rgba(200,200,200,0.5);
+  margin-bottom: 30px;
+  padding:20px;
+  border-radius: 5px;
+  text-align:center;
+}
+
+.font h1, h2 {
+  padding: 20px 0px;
+}
+
+.auteur {
+  position:absolute;
+  bottom: 5px;
+  right: 10px;
+  color: white;
+}

@@ -1,0 +1,116 @@
+.container{
+  /* On ajoute une marge sur les cotés de l'écran */
+  padding-right: 15px;
+  padding-left: 15px;
+
+  /* Et on centre */
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.subcontainer {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  background-color: white;
+  margin-bottom: 30px;
+  padding:20px;
+  border-radius: 5px;
+  // width:90%;
+}
+
+.infos-deduction {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.flex_container {
+  display:block;
+};
+
+.scroll {
+  height: auto;
+  overflow-y: scroll;
+  width:90%;
+  overflow-y: hidden; //horizontal
+};
+
+.flex_response {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;   // display: flex;
+
+  div {
+    width: 150px;
+    display: grid;
+  }
+  span {
+    margin-top: 10px;
+  }
+
+  input {
+    margin-top: 5px;
+    width:50%;
+    height:20px;
+  }
+}
+
+.compute_pret {
+
+  p {
+    padding-right:10px;
+  }
+}
+
+.resumetitle {
+  width:40%;
+}
+
+.resume {
+  width:60%;
+  padding-top:15px;
+
+  div {
+    // width:100px;
+    justify-content: space-between;
+    display: flex;
+  }
+
+  div:last-child {
+    width:100px;
+  }
+}
+
+
+
+@media (min-width: 815px){
+
+  .flex_container {
+    display:flex;
+  };
+
+  .scroll {
+    height: 150vh;
+    overflow-y: scroll;
+    width:25%;
+    padding-right:15px;
+    padding-left:15px;
+
+  }
+
+  .scroll::-webkit-scrollbar {
+    display: none;
+  }
+
+  .resume {
+    display:flex;
+    justify-content:space-around;
+    padding-top:0px;
+  };
+
+  .simulationbutton {
+    margin-top:0px;
+  }
+}
+
+
+
+

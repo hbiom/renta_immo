@@ -1,0 +1,16 @@
+
+.navbar {
+  list-style-type: none;
+  padding: 30px;
+  display:flex;
+  justify-content: space-between;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  margin:0px;
+}
+
+.navbar > div {
+  width: 15%;
+  display: flex;
+  justify-content: space-between;
+}

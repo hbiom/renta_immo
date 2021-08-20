@@ -1,5 +1,8 @@
 from flask import Flask
 from flask import render_template
+from utility import simulation_mensuelle, prix_du_pret, calcul_impot
+from utility import simulation_amortissement, simulation_abbatement
+from utility import int_converter, float_converter
 
 #  https://sass.github.io/libsass-python/frameworks/flask.html
 from sassutils.wsgi import SassMiddleware

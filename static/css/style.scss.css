@@ -1,4 +1,421 @@
+@charset "UTF-8";
+.container {
+  /* On ajoute une marge sur les cotés de l'écran */
+  padding-right: 15px;
+  padding-left: 15px;
+  /* Et on centre */
+  margin-right: auto;
+  margin-left: auto; }
+
+.subcontainer {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 5px; }
+
+.infos-deduction {
+  justify-content: space-between;
+  flex-wrap: wrap; }
+
+.flex_container {
+  display: block; }
+
+.scroll {
+  height: auto;
+  overflow-y: scroll;
+  width: 90%;
+  overflow-y: hidden; }
+
+.flex_response {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .flex_response div {
+    width: 150px;
+    display: grid; }
+  .flex_response span {
+    margin-top: 10px; }
+  .flex_response input {
+    margin-top: 5px;
+    width: 50%;
+    height: 20px; }
+
+.compute_pret p {
+  padding-right: 10px; }
+
+.resumetitle {
+  width: 40%; }
+
+.resume {
+  width: 60%;
+  padding-top: 15px; }
+  .resume div {
+    justify-content: space-between;
+    display: flex; }
+  .resume div:last-child {
+    width: 100px; }
+
+@media (min-width: 815px) {
+  .flex_container {
+    display: flex; }
+  .scroll {
+    height: 150vh;
+    overflow-y: scroll;
+    width: 25%;
+    padding-right: 15px;
+    padding-left: 15px; }
+  .scroll::-webkit-scrollbar {
+    display: none; }
+  .resume {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 0px; }
+  .simulationbutton {
+    margin-top: 0px; } }
+
+.footer {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.05);
+  padding: 32px 0px;
+  background-color: white;
+  margin: 0px;
+  margin-top: 10px; }
+
+.footer-category {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; }
+  .footer-category p {
+    color: #808080;
+    margin: 0px; }
+    .footer-category p:hover {
+      color: #F5F3F2; }
+
+.footer-nav p {
+  padding: 16px 32px; }
+
+.footer-social p {
+  font-size: 24px;
+  padding: 16px 8px; }
+
+.navbar {
+  list-style-type: none;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  margin: 0px; }
+
+.navbar > div {
+  width: 15%;
+  display: flex;
+  justify-content: space-between; }
+
+.form3 {
+  padding-bottom: 20px; }
+
+.form1 {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 20px; }
+  .form1 input {
+    width: 30%; }
+
+.form1 > div {
+  width: 20%; }
+  .form1 > div span {
+    padding-right: 20px; }
+
+.form2 {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 20px; }
+  .form2 input {
+    width: 30%;
+    margin-top: 10px; }
+  .form2 span {
+    padding-right: 10px; }
+
+.slogan {
+  padding: 15px 0px; }
+
+.title {
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  padding-bottom: 20px; }
+
+.section {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  margin-bottom: 15px;
+  padding: 5px;
+  border-radius: 10px;
+  text-align: center; }
+
+.deduction {
+  width: 90%;
+  border: 2px solid green;
+  border-radius: 5px;
+  padding: 3px;
+  background-color: rgba(0, 128, 0, 0.8);
+  font-weight: bold;
+  text-align: center;
+  font-size: 80%;
+  color: white; }
+
+.plafond {
+  width: 90%;
+  margin-top: 5px;
+  border: 2px solid #ff1015;
+  border-radius: 5px;
+  padding: 3px;
+  background-color: rgba(255, 16, 21, 0.6);
+  font-weight: bold;
+  text-align: center;
+  font-size: 80%;
+  color: white; }
+
+.red {
+  color: red;
+  font-weight: bold; }
+
+.green {
+  color: green;
+  font-weight: bold; }
+
+.black {
+  color: black;
+  font-weight: bold; }
+
+.casflow {
+  padding-left: 5px; }
+
+.impot {
+  padding-left: 5px; }
+
+.faker {
+  text-align: center;
+  font-size: 12px;
+  color: grey;
+  padding-bottom: 5px; }
+
+@media (min-width: 800px) {
+  .table-result {
+    margin-top: 20px; }
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 80%;
+    table-layout: fixed;
+    width: 100%; }
+  td, th {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px; }
+  tr:nth-child(even) {
+    background-color: #dddddd; } }
+
+@media (max-width: 850px) {
+  /* Force table to not be like tables anymore */
+  table, thead, tbody, th, td, tr {
+    display: block; }
+  /* Hide table headers (but not display: none;, for accessibility) */
+  thead tr {
+    display: none; }
+  tr {
+    border: 1px solid #ccc; }
+  tr:nth-child(even) {
+    background-color: #dddddd; }
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%; }
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap; }
+  div.simulation_amortissement table {
+    /* Label the data */ }
+    div.simulation_amortissement table td:nth-of-type(1):before {
+      content: "Annee"; }
+    div.simulation_amortissement table td:nth-of-type(2):before {
+      content: "Travaux"; }
+    div.simulation_amortissement table td:nth-of-type(3):before {
+      content: "Meuble"; }
+    div.simulation_amortissement table td:nth-of-type(4):before {
+      content: "Batisse"; }
+    div.simulation_amortissement table td:nth-of-type(5):before {
+      content: "Frais d'agence"; }
+    div.simulation_amortissement table td:nth-of-type(6):before {
+      content: "Notaire"; }
+    div.simulation_amortissement table td:nth-of-type(7):before {
+      content: "Imposition"; }
+    div.simulation_amortissement table td:nth-of-type(8):before {
+      content: "Impot"; }
+    div.simulation_amortissement table td:nth-of-type(9):before {
+      content: "Charges"; }
+    div.simulation_amortissement table td:nth-of-type(10):before {
+      content: "Revenu"; }
+    div.simulation_amortissement table td:nth-of-type(11):before {
+      content: "Cashflow"; }
+  div.simulation_abbatement table {
+    /* Label the data */ }
+    div.simulation_abbatement table td:nth-of-type(1):before {
+      content: "Annee"; }
+    div.simulation_abbatement table td:nth-of-type(2):before {
+      content: "Deduction"; }
+    div.simulation_abbatement table td:nth-of-type(3):before {
+      content: "Imposition"; }
+    div.simulation_abbatement table td:nth-of-type(4):before {
+      content: "Impot"; }
+    div.simulation_abbatement table td:nth-of-type(5):before {
+      content: "Revenu"; }
+    div.simulation_abbatement table td:nth-of-type(6):before {
+      content: "Cashflow"; } }
+
+.font {
+  width: 100%;
+  background-size: cover;
+  height: calc(100vh);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.intro {
+  width: 70%;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background-color: rgba(200, 200, 200, 0.5);
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center; }
+
+.font h1, h2 {
+  padding: 20px 0px; }
+
+.auteur {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  color: white; }
+
+.buttonCsv {
+  background-color: #4863a0;
+  width: 50px;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  border: 1px solid white;
+  margin-top: 20px; }
+
+.buttonCsv:hover {
+  background-color: rgba(72, 99, 160, 0.5);
+  width: 50px;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  border: 1px solid white;
+  margin-top: 20px; }
+
+.simulationbutton {
+  height: 20px;
+  background-color: #4863a0;
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  border: 1px solid white;
+  margin-top: 5px; }
+
+.simulationbutton:hover {
+  height: 20px;
+  background-color: rgba(72, 99, 160, 0.5);
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  border: 1px solid white;
+  margin-top: 5px; }
+
+@media (min-width: 815px) {
+  .simulationbutton {
+    margin-top: 0px; }
+  .simulationbutton:hover {
+    margin-top: 0px; } }
+
+.kpi-section {
+  margin-right: auto;
+  margin-left: auto;
+  background-color: white;
+  padding: 0px 15px; }
+
+.metric_box {
+  margin-bottom: 30px;
+  padding: 20px;
+  width: 15%; }
+  .metric_box span {
+    font-size: 2.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+    color: #4863a0; }
+
+.kpi {
+  justify-content: center;
+  width: 80%;
+  margin: auto; }
+
+.kpi-title {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bold; }
+
+body {
+  margin: 0px 0px;
+  background-color: rgba(72, 99, 160, 0.5); }
+
+h1, h2, h3, h4 {
+  margin: 0px; }
+
+a {
+  text-decoration: none; }
+
 p {
-  color: green; }
+  margin: 0px;
+  padding: 0px; }
+
+.text-blue {
+  color: #4863a0; }
+
+.text-align {
+  text-align: center; }
+
+.collapse {
+  display: none; }
+
+.flex {
+  display: flex; }
+
+.padding-top {
+  padding-top: 20px; }
+
+.margin-bottom {
+  margin-bottom: 5px; }
 
 /*# sourceMappingURL=style.scss.css.map */

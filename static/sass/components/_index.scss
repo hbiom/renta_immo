@@ -1,0 +1,58 @@
+
+@import "container";
+@import "footer";
+@import "navbar";
+@import "form";
+@import "text";
+@import "table";
+@import "landing";
+@import "button";
+@import "kpi";
+
+
+$color-bluebackground: rgba(72, 99, 160,0.5);
+$color-bluetext: rgba(72, 99, 160,1);
+
+
+body {
+  margin:0px 0px;
+  background-color: $color-bluebackground;
+}
+
+h1,h2,h3,h4 {
+  margin:0px;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin:0px;
+  padding: 0px;
+}
+
+.text-blue {
+  color:$color-bluetext;
+}
+
+.text-align {
+  text-align:center;
+}
+
+.collapse {
+  display:none
+}
+
+.flex {
+  display:flex;
+}
+
+.padding-top {
+  padding-top: 20px;
+}
+
+.margin-bottom {
+  margin-bottom: 5px;
+}
+

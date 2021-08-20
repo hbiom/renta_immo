@@ -1,0 +1,41 @@
+
+.form3{
+  padding-bottom: 20px;
+}
+
+
+.form1{
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+
+  input {
+    width: 30%;
+  }
+}
+
+.form1 > div {
+  width: 20%;
+  span {
+    padding-right: 20px;
+  }
+}
+
+.form2{
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+
+  input {
+    width: 30%;
+    margin-top: 10px;
+  }
+
+  span {
+    padding-right:10px;
+  }
+}
+
+
+
+
