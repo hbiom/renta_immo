@@ -309,55 +309,31 @@
   right: 10px;
   color: white; }
 
-.buttonCsv {
-  background-color: #4863a0;
-  width: 50px;
-  text-align: center;
-  padding: 5px;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  border: 1px solid white;
-  margin-top: 20px; }
-
-.buttonCsv:hover {
-  background-color: rgba(72, 99, 160, 0.5);
-  width: 50px;
-  text-align: center;
-  padding: 5px;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  border: 1px solid white;
-  margin-top: 20px; }
-
-.simulationbutton {
-  height: 20px;
+.buttonBlue {
   background-color: #4863a0;
   text-align: center;
+  height: 35px;
   padding: 5px;
   border-radius: 5px;
   color: white;
   font-weight: bold;
-  border: 1px solid white;
-  margin-top: 5px; }
+  border: 1px solid white; }
 
-.simulationbutton:hover {
-  height: 20px;
+.buttonBlue:hover {
   background-color: rgba(72, 99, 160, 0.5);
   text-align: center;
+  height: 35px;
   padding: 5px;
   border-radius: 5px;
   color: white;
   font-weight: bold;
-  border: 1px solid white;
-  margin-top: 5px; }
+  border: 1px solid white; }
 
 @media (min-width: 815px) {
-  .simulationbutton {
-    margin-top: 0px; }
-  .simulationbutton:hover {
-    margin-top: 0px; } }
+  .buttonBlue {
+    margin-top: 10px; }
+  .buttonBlue:hover {
+    margin-top: 10px; } }
 
 .kpi-section {
   margin-right: auto;

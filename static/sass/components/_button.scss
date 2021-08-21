@@ -1,58 +1,56 @@
 
-.buttonCsv {
-  background-color: rgba(72, 99, 160,1);
-  width: 50px;
-  text-align: center;
-  padding: 5px;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  border: 1px solid white;
-  margin-top: 20px;
-}
-
-.buttonCsv:hover {
-  background-color: rgba(72, 99, 160,0.5);
-  width: 50px;
-  text-align: center;
-  padding: 5px;
-  border-radius: 5px;
-  color: white;
-  font-weight: bold;
-  border: 1px solid white;
-  margin-top: 20px;
-}
-
-.simulationbutton {
-  height: 20px;
+.buttonBlue {
   background-color: rgba(72, 99, 160,1);
   text-align: center;
+  height: 35px;
   padding: 5px;
   border-radius: 5px;
   color: white;
   font-weight: bold;
   border: 1px solid white;
-  margin-top:5px;
 }
 
-.simulationbutton:hover {
-  height: 20px;
+.buttonBlue:hover {
   background-color: rgba(72, 99, 160,0.5);
   text-align: center;
+  height: 35px;
   padding: 5px;
   border-radius: 5px;
   color: white;
   font-weight: bold;
   border: 1px solid white;
-  margin-top:5px;
 }
+
+// .simulationbutton {
+//   height: 20px;
+//   background-color: rgba(72, 99, 160,1);
+//   text-align: center;
+//   padding: 5px;
+//   border-radius: 5px;
+//   color: white;
+//   font-weight: bold;
+//   border: 1px solid white;
+//   margin-top:5px;
+// }
+
+// .simulationbutton:hover {
+//   height: 20px;
+//   background-color: rgba(72, 99, 160,0.5);
+//   text-align: center;
+//   padding: 5px;
+//   border-radius: 5px;
+//   color: white;
+//   font-weight: bold;
+//   border: 1px solid white;
+//   margin-top:5px;
+// }
 
 @media (min-width: 815px){
-  .simulationbutton {
-    margin-top:0px;
+  .buttonBlue {
+    margin-top:10px;
   }
 
-  .simulationbutton:hover {
-    margin-top:0px;
+  .buttonBlue:hover {
+    margin-top:10px;
   }
 }
