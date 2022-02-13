@@ -30,7 +30,6 @@ def prix_du_pret(pret, apport, taux, taux_Assurance, n):
   if pret > apport:
     capital_emprunte = pret - apport
     m = simulation_mensuelle(pret, apport, taux, taux_Assurance, n)
-    print(m)
     return 0 if round((m*(n*12)) - capital_emprunte,2) < 0 else round((m*(n*12)) - capital_emprunte,2)
   return 0
 
@@ -152,7 +151,6 @@ def simulation_amortissement(dico, revenu_locatif, année, charge, charge_hors_i
   col.append('Cashflow')
 
   df = pd.DataFrame(row,columns=col)
-  print(df)
   return df.to_dict()
 
 
@@ -187,7 +185,6 @@ def simulation_abbatement(revenu_locatif=0, année=1, charge_hors_interet=0, tau
     deduction = revenu_locatif*(1 - taux_abbatement)
     cashflow = (revenu_locatif/12 - (charge_hors_interet/12 + impot/12 + mensualité))
     regime.append(deduction)
-    print(deduction)
     regime.append(imposition)
     regime.append(impot)
     regime.append(revenu_locatif)
@@ -202,5 +199,4 @@ def simulation_abbatement(revenu_locatif=0, année=1, charge_hors_interet=0, tau
   col.append('Cashflow')
 
   df = pd.DataFrame(row,columns=col)
-  print(df)
   return df.to_dict()
