@@ -1,44 +1,9 @@
-
-
-function acquisitionPriceExctractor(element, regime) {
-  // extrait les données charges et durée d'amortissement correspondante parregime dans un json
-  if (regime == "foncier_reel") {
-    var amortissement = {}
-    for (child of element.children) {
-      var cost_name = child.className;
-      if (child.className == "Travaux") {
-        // console.log(cost_name)
-        var prix = parseInt(child.children[1].value)|| 0;
-        var nbr_année = parseInt(child.children[3].value)|| 1;
-
-        var cat = {
-          prix,
-          nbr_année
-        }
-        amortissement[cost_name] = cat;
-      }
-    }
-  } else if (regime == "LMNP") {
-    var amortissement = {}
-      for (child of element.children) {
-        var cost_name = child.className;
-        var prix = parseInt(child.children[1].value)|| 0;
-        var nbr_année = parseInt(child.children[3].value)|| 1;
-
-        var cat = {
-          prix,
-          nbr_année
-        }
-        amortissement[cost_name] = cat;
-      }
-    }
-  return amortissement
-}
+import { acquisitionPriceExctractor } from './components/acquisitionPriceExctractor.js';
 
 
 function obj2htmltable(obj) {
   //  creer une table HTML à partir d'un dico creer dans utils/simulation_amortissement ou simulation_abbatement
-  cols = []
+  var cols = []
   var html = '<table>';
   html += '<tr>'
   html += '<thead>'
@@ -46,7 +11,7 @@ function obj2htmltable(obj) {
     var item = obj[key];
       html += '<th>' + key + '</th>';
     cols.push(item)
-    dico_size = Object.keys(item).length - 1
+    var dico_size = Object.keys(item).length - 1
   };
   html += '<tr>'
   html += '</thead>'
@@ -96,7 +61,6 @@ function exportTableToCSV(filename, table) {
   var csv = [];
   var rows = table.querySelectorAll("table tr");
 
-
   for (var i = 0; i < rows.length; i++) {
     var row = [], cols = rows[i].querySelectorAll("td, th");
 
@@ -131,7 +95,9 @@ function downloadCSVButon() {
   });
 };
 
-function animateValue(obj, start, duration) {
+
+
+function animateValue(kpiValue, start, duration) {
   let startTimestamp = null;
   kpiValue.forEach(element=> {
     let end = parseInt(element.innerHTML)
@@ -148,8 +114,7 @@ function animateValue(obj, start, duration) {
 }
 
 function colorValue(value) {
-  valueCashflow = parseInt(value.innerHTML)
-  console.log(value.innerHTML)
+  var valueCashflow = parseInt(value.innerHTML)
   if (valueCashflow < 0) {
     value.classList.remove("green");
     value.classList.add("red");
@@ -178,8 +143,6 @@ $(document).ready(function() {
       var interet_year =  parseInt(result_prix/nbrannee)
       var pret_bancaire = document.querySelector('.pret_bancaire');
       pret_bancaire.value = interet_year
-      // pret_bancaire.setAttribute(interet_year, 0);
-
       var sum_charge = document.querySelector('.sum_charge');
       sum_charge.innerHTML = taxe_fonciere + frais_gestion + assurance + entretien + charge_copro + autre + interet_year;
     });
@@ -203,7 +166,6 @@ $(document).ready(function() {
     element.addEventListener('click', (event) => {
       // to refracto
       var table = element.parentElement.parentElement.parentElement.parentElement.children[2];
-      console.log(table)
       table.classList.toggle("collapse");
     });
   });
@@ -214,8 +176,6 @@ $(document).ready(function() {
 function server_response(response) {
   // convert to json format
   var r = response
-  // console.log(response)
-  console.log(response)
 
   var result_mensu = document.querySelector('.result_mensu');
   var result_prix = document.querySelector('.result_prix');
@@ -266,6 +226,19 @@ function server_response(response) {
 }
 
 
+function kpi_display() {
+  $(window).on('scroll', function() {
+      var element_position = $('.kpi-section').offset().top -650;
+      var y_scroll_pos = window.pageYOffset;
+      var scroll_pos_test = element_position;
+
+      if(y_scroll_pos > scroll_pos_test) {
+        var kpiValue = document.querySelectorAll('.kpi-value');
+        animateValue(kpiValue, 0, 2000);
+        $(window).off("scroll");
+      }
+  });
+};
 
 
 $(document).ready(function() {
@@ -303,8 +276,8 @@ $(document).ready(function() {
       var prix_acquisition = document.querySelector('.prix_acquisition');
       // var Foncier_reel_value = document.querySelector('.Foncier_reel');
 
-      var lmnp = acquisitionPriceExctractor(prix_acquisition, regime = "LMNP")
-      var Foncier_reel = acquisitionPriceExctractor(prix_acquisition, regime = "foncier_reel")
+      var lmnp = acquisitionPriceExctractor(prix_acquisition, "LMNP")
+      var Foncier_reel = acquisitionPriceExctractor(prix_acquisition, "foncier_reel")
       // var microbic = document.querySelector('.microbic');
 
       var data = { prix_achat: prix_achat,
@@ -322,7 +295,6 @@ $(document).ready(function() {
                   }
 
       console.log(data)
-      console.log(typeof data);
 
       $.ajax({
           url: '/api',
@@ -338,6 +310,8 @@ $(document).ready(function() {
       });
     });
   });
+  downloadCSVButon()
+  kpi_display()
 });
 
 // Simulation Table
@@ -348,5 +322,3 @@ var tablemicrofoncier = document.querySelector('.tablemicrofoncier');
 var tablemicro_tourisme = document.querySelector('.tablemicro_tourisme');
 
 
-
-downloadCSVButon()

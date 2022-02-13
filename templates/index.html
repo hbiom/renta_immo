@@ -6,11 +6,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-
-
-    <script type="text/javascript" src="/static/js/main.js"></script>
+    <script type="module" src="/static/js/main.js"></script>
     <link href="{{ url_for('static', filename='css/style.scss.css') }}" rel="stylesheet" type="text/css">
-
   </head>
 
   <body>
@@ -31,7 +28,7 @@
       </div>
       <div class="flex_response kpi">
         <div class="metric_box">
-          <span class="kpi-value" id="user">8000</span>
+          <span class="kpi-value">8000</span>
           <p class="kpi-title">Utilisateurs</p>
         </div>
         <div class="metric_box">
@@ -61,308 +58,305 @@
       </div>
     </div>
 
-<div class="flex_container padding-top">
-  <div class="container scroll">
-      <h1 class="section text-blue">Simulation </h1>
-    <div class="subcontainer">
-      <p class="title">Calcul mensualité</p>
-      <form onsubmit="return false" id="form">
-        <div class="flex_response">
-          <div>
-            <span>Prix d'achat</span>
-            <input type="number" name="prix_achat" min=0 placeholder = "60 000" class="bank_input prix_achat compute" />
-          </div>
-          <div>
-            <span>Apport</span>
-            <input type="number" name="apport" min=0 placeholder = "0" class="bank_input apport compute" />
-          </div>
-          <div>
-            <span>Nombre d'année</span>
-            <input type="number" name="nbrannee" min=0 placeholder = "25 ans" class="bank_input nbrannee compute" />
-          </div>
-          <div>
-            <span>Taux</span>
-            <input type="number" name="taux" min=0.1 placeholder = "1.22" step="0.1" class="bank_input taux compute"/>
-          </div>
-          <div>
-            <span>Assurance</span>
-            <input type="number" name="taux_Assurance" min=0.1 placeholder = "0.3" step="0.1" class="bank_input taux_Assurance compute"/>
+    <div class="flex_container padding-top">
+      <div class="container scroll">
+          <h1 class="section text-blue">Simulation </h1>
+        <div class="subcontainer">
+          <p class="title">Calcul mensualité</p>
+          <form onsubmit="return false" id="form">
+            <div class="flex_response">
+              <div>
+                <span>Prix d'achat</span>
+                <input type="number" name="prix_achat" min=0 placeholder = "60 000" class="bank_input prix_achat compute" />
+              </div>
+              <div>
+                <span>Apport</span>
+                <input type="number" name="apport" min=0 placeholder = "0" class="bank_input apport compute" />
+              </div>
+              <div>
+                <span>Nombre d'année</span>
+                <input type="number" name="nbrannee" min=0 placeholder = "25 ans" class="bank_input nbrannee compute" />
+              </div>
+              <div>
+                <span>Taux</span>
+                <input type="number" name="taux" min=0.1 placeholder = "1.22" step="0.1" class="bank_input taux compute"/>
+              </div>
+              <div>
+                <span>Assurance</span>
+                <input type="number" name="taux_Assurance" min=0.1 placeholder = "0.3" step="0.1" class="bank_input taux_Assurance compute"/>
+              </div>
+            </div>
+          </form>
+          <div class="compute_pret padding-top">
+            <div class="flex">
+              <p>Mensualités :</p><span class="result_mensu">0</span>
+            </div>
+            <div class="flex">
+              <p>Prix du prêt :</p><span class="result_prix">0</span>
+            </div>
           </div>
         </div>
-      </form>
-      <div class="compute_pret padding-top">
-        <div class="flex">
-          <p>Mensualités :</p><span class="result_mensu">0</span>
+
+        <div class="subcontainer">
+          <p class="title">Prix d'acquisition</p>
+          <div class="prix_acquisition flex_response">
+            <div class="Travaux">
+              <span> Travaux </span>
+              <input type="number" placeholder="10 000" />
+              <span> Amortissement </span>
+              <input type="number" placeholder="10 ans" />
+            </div>
+            <div class="Meuble">
+              <span> Meuble </span>
+              <input type="number" placeholder="5 000" />
+              <span> Amortissement </span>
+              <input type="number" placeholder="6 ans" />
+            </div>
+            <div class="Batisse">
+              <span> Batisse </span>
+              <input type="number" placeholder="50 000" />
+              <span> Amortissement </span>
+              <input type="number" placeholder="30 ans" />
+            </div>
+            <div class="Frais d'agence">
+              <span> Frais d'agence </span>
+              <input type="number" placeholder="5 000" />
+              <span> Amortissement </span>
+              <input type="number" placeholder="5 ans" />
+            </div>
+            <div class="Notaire">
+              <span> Notaire </span>
+              <input type="number" placeholder="10 000" />
+              <span> Amortissement </span>
+              <input type="number" placeholder="10 ans" />
+            </div>
+          </div>
         </div>
-        <div class="flex">
-          <p>Prix du prêt :</p><span class="result_prix">0</span>
+
+        <div class="subcontainer">
+          <p class="title">Frais annuel</p>
+          <form method="post">
+            <div class="flex_response">
+              <div>
+                <span>Taxe fonciére</span>
+                <input type="number" name="taxe_fonciere" placeholder = "400" min=0 class="taxe_fonciere input_charge compute" />
+              </div>
+              <div>
+                <span>Frais de gestion</span>
+                <input type="number" name="frais_gestion" placeholder = "200" min=0 class="frais_gestion input_charge compute" />
+              </div>
+              <div>
+                <span>Entretien</span>
+                <input type="number" name="entretien" placeholder = "150" min=0 class="entretien input_charge compute" />
+              </div>
+              <div>
+                <span>Assurance</span>
+                <input type="number" name="assurance" placeholder = "300" min=0 class="assurance input_charge compute"/>
+              </div>
+              <div>
+                <span>Charge copro</span>
+                <input type="number" name="charge_copro" placeholder = "400" min=0 class="charge_copro input_charge compute"/>
+              </div>
+              <div>
+                <span>Pret Bancaire</span>
+                <input type="number" name="pret_bancaire" placeholder = "500" min=0 class="pret_bancaire"/>
+              </div>
+              <div>
+                <span>Autre</span>
+                <input type="number" name="autre" placeholder = "25" min=0 class="autre input_charge compute"/>
+              </div>
+            </div>
+          </form>
+          <p class="padding-top"> Charges annuelles :</p><span class="sum_charge">0</span>
         </div>
+
+        <div class="subcontainer">
+          <p class="title">Valeur imposable</p>
+          <form method="post">
+            <div class="form3">
+              <div class="flex_response">
+                <div>
+                  <span> Salaire imposable annuel  </span>
+                  <input type="number" name="salaire_imposable" placeholder = "28 000" min=0 class="salaire_imposable compute impot_revenu" />
+                </div>
+                <div>
+                  <span> Nombre de part </span>
+                  <input type="text" name="nbr_part" min=1 placeholder = "1" class="nbr_part compute impot_revenu">
+                </div>
+                <div>
+                  <span> Loyer mensuel </span>
+                  <input type="number" name="loyer_mensuel" min=0 placeholder = "400" class="revenu_locatif loyer_mensuel compute" />
+                </div>
+                <div>
+                  <span> Occupation </span>
+                  <input type="number" name="nbr_mois" min=0 max=12 placeholder = "5 mois" step="0.5" class="revenu_locatif nbr_mois compute" />
+                </div>
+                <div>
+                  <span> Revenu locatif </span>
+                  <input type="number" name="revenu_locatif" min=0 class="revenu_locatif_annuel" />
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="container" style="width: 90%">
+        <h1 class="section text-blue">Location Meublée </h1>
+        <div class="subcontainer">
+          <div id="resumeLMNP">
+            <div class="resumetitle">
+              <p class="title">LMNP</p>
+            </div>
+             <div class="infos-deduction flex_container">
+                <div style="width: 40%">
+                  <p class="deduction">Deduction des charges et amortissements</p>
+                  <p class="plafond">Plafond annuel: 4000 euros</p>
+                </div>
+                <div class="resume">
+                  <div>
+                    <p>Cashflow :</p><p class="casflow"></p>
+                  </div>
+                  <div>
+                    <p>Impot :</p><p class="impot"></p>
+                  </div>
+                  <div>
+                    <p class="simulation_year simulationbutton buttonBlue"> Simulation</p>
+                  </div>
+                </div>
+              </div>
+            <div class="LMNP collapse padding-top">
+              <div class="tablelmnp simulation_amortissement"></div>
+              <div class="buttonBlue buttonCsv">Export</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subcontainer">
+          <div id="resumemicrobic">
+            <div class="resumetitle">
+              <p class="title">Micro-BIC</p>
+            </div>
+             <div class="infos-deduction flex_container">
+                <div style="width: 40%">
+                  <p class="deduction">Abbatement 50%</p>
+                  <p class="plafond">Plafond annuel: 4000 euros</p>
+                </div>
+                <div class="resume">
+                  <div>
+                    <p>Cashflow :</p><p class="casflow"></p>
+                  </div>
+                  <div>
+                    <p>Impot :</p><p class="impot"></p>
+                  </div>
+                  <div>
+                    <p class="simulation_year simulationbutton buttonBlue"> Simulation</p>
+                  </div>
+                </div>
+              </div>
+            <div class="microbic collapse padding-top">
+              <div class="tablemicro_bic simulation_abbatement"></div>
+              <div class="buttonBlue buttonCsv">Export</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subcontainer">
+          <div id="resumemicrobictourisme">
+            <div class="resumetitle">
+              <p class="title">Micro-BIC-tourisme</p>
+            </div>
+           <div class="infos-deduction flex_container">
+              <div style="width: 40%">
+                <p class="deduction">Abbatement 70%</p>
+                <p class="plafond">Plafond annuel: 4000 euros</p>
+              </div>
+              <div class="resume">
+                <div>
+                  <p>Cashflow :</p><p class="casflow"></p>
+                </div>
+                <div>
+                  <p>Impot :</p><p class="impot"></p>
+                </div>
+                <div>
+                  <p class="simulation_year simulationbutton buttonBlue"> Simulation</p>
+                </div>
+              </div>
+            </div>
+            <div class="microtourisme collapse padding-top">
+              <div class="tablemicro_tourisme simulation_abbatement"></div>
+              <div class="buttonBlue buttonCsv">Export</div>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="section text-blue">Location Nue </h1>
+
+        <div class="subcontainer">
+          <div id="resumefoncierreel">
+            <div class="resumetitle">
+              <p class="title">Foncier réel</p>
+            </div>
+             <div class="infos-deduction flex_container">
+                <div style="width: 40%">
+                  <p class="deduction">Deduction des charges et travaux</p>
+                  <p class="plafond">Plafond annuel: 4000 euros</p>
+                </div>
+                <div class="resume">
+                  <div>
+                    <p>Cashflow :</p><p class="casflow"></p>
+                  </div>
+                  <div>
+                    <p>Impot :</p><p class="impot"></p>
+                  </div>
+                  <div>
+                    <p class="simulation_year simulationbutton buttonBlue"> Simulation</p>
+                  </div>
+                </div>
+            </div>
+            <div class="Foncier_reel collapse padding-top">
+              <div class="tablefonciereel simulation_amortissement"></div>
+              <div class="buttonBlue buttonCsv">Export</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subcontainer">
+          <div id="resumemicrofoncier">
+            <div class="resumetitle">
+              <p class="title">Micro Foncier</p>
+            </div>
+            <div class="infos-deduction flex_container">
+              <div style="width: 40%">
+                <p class="deduction">Abbatement 30%</p>
+                <p class="plafond">Plafond annuel: 4000 euros</p>
+              </div>
+              <div class="resume">
+                <div>
+                  <p>Cashflow :</p><p class="casflow"></p>
+                </div>
+                <div>
+                  <p>Impot :</p><p class="impot"></p>
+                </div>
+                <div>
+                  <p class="simulation_year simulationbutton buttonBlue"> Simulation</p>
+                </div>
+              </div>
+            </div>
+            <div class="microfoncier collapse padding-top">
+              <div class="tablemicrofoncier simulation_abbatement"></div>
+              <div class="buttonBlue buttonCsv">Export</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="subcontainer">
+          <p>
+            Attention : Ces simulations sont des estimations. Nous vous conseillons de bien anticiper les charges/travaux et de consulter un comptable. Il existe
+            également d'autres régimes fiscals non abordés ici (SCI, deficit foncier ...) qui peuvent mieux correspondre à votre situation.
+          </p>
+        </div>
+
       </div>
     </div>
-
-    <div class="subcontainer">
-      <p class="title">Prix d'acquisition</p>
-      <div class="prix_acquisition flex_response">
-        <div class="Travaux">
-          <span> Travaux </span>
-          <input type="number" placeholder="10 000" />
-          <span> Amortissement </span>
-          <input type="number" placeholder="10 ans" />
-        </div>
-        <div class="Meuble">
-          <span> Meuble </span>
-          <input type="number" placeholder="5 000" />
-          <span> Amortissement </span>
-          <input type="number" placeholder="6 ans" />
-        </div>
-        <div class="Batisse">
-          <span> Batisse </span>
-          <input type="number" placeholder="50 000" />
-          <span> Amortissement </span>
-          <input type="number" placeholder="30 ans" />
-        </div>
-        <div class="Frais d'agence">
-          <span> Frais d'agence </span>
-          <input type="number" placeholder="5 000" />
-          <span> Amortissement </span>
-          <input type="number" placeholder="5 ans" />
-        </div>
-        <div class="Notaire">
-          <span> Notaire </span>
-          <input type="number" placeholder="10 000" />
-          <span> Amortissement </span>
-          <input type="number" placeholder="10 ans" />
-        </div>
-      </div>
-    </div>
-
-    <div class="subcontainer">
-      <p class="title">Frais annuel</p>
-      <form method="post">
-        <div class="flex_response">
-          <div>
-            <span>Taxe fonciére</span>
-            <input type="number" name="taxe_fonciere" placeholder = "400" min=0 class="taxe_fonciere input_charge compute" />
-          </div>
-          <div>
-            <span>Frais de gestion</span>
-            <input type="number" name="frais_gestion" placeholder = "200" min=0 class="frais_gestion input_charge compute" />
-          </div>
-          <div>
-            <span>Entretien</span>
-            <input type="number" name="entretien" placeholder = "150" min=0 class="entretien input_charge compute" />
-          </div>
-          <div>
-            <span>Assurance</span>
-            <input type="number" name="assurance" placeholder = "300" min=0 class="assurance input_charge compute"/>
-          </div>
-          <div>
-            <span>Charge copro</span>
-            <input type="number" name="charge_copro" placeholder = "400" min=0 class="charge_copro input_charge compute"/>
-          </div>
-          <div>
-            <span>Pret Bancaire</span>
-            <input type="number" name="pret_bancaire" placeholder = "500" min=0 class="pret_bancaire"/>
-          </div>
-          <div>
-            <span>Autre</span>
-            <input type="number" name="autre" placeholder = "25" min=0 class="autre input_charge compute"/>
-          </div>
-        </div>
-      </form>
-      <p class="padding-top"> Charges annuelles :</p><span class="sum_charge">0</span>
-    </div>
-
-    <div class="subcontainer">
-      <p class="title">Valeur imposable</p>
-      <form method="post">
-        <div class="form3">
-          <div class="flex_response">
-            <div>
-              <span> Salaire imposable annuel  </span>
-              <input type="number" name="salaire_imposable" placeholder = "28 000" min=0 class="salaire_imposable compute impot_revenu" />
-            </div>
-            <div>
-              <span> Nombre de part </span>
-              <input type="text" name="nbr_part" min=1 placeholder = "1" class="nbr_part compute impot_revenu">
-            </div>
-            <div>
-              <span> Loyer mensuel </span>
-              <input type="number" name="loyer_mensuel" min=0 placeholder = "400" class="revenu_locatif loyer_mensuel compute" />
-            </div>
-            <div>
-              <span> Occupation </span>
-              <input type="number" name="nbr_mois" min=0 max=12 placeholder = "5 mois" step="0.5" class="revenu_locatif nbr_mois compute" />
-            </div>
-            <div>
-              <span> Revenu locatif </span>
-              <input type="number" name="revenu_locatif" min=0 class="revenu_locatif_annuel" />
-            </div>
-          </div>
-        </div>
-      </div>
-  </div>
-
-  <div class="container" style="width: 90%">
-    <h1 class="section text-blue">Location Meublée </h1>
-    <div class="subcontainer">
-      <div id="resumeLMNP">
-        <div class="resumetitle">
-          <p class="title">LMNP</p>
-        </div>
-         <div class="infos-deduction flex_container">
-            <div style="width: 40%">
-              <p class="deduction">Deduction des charges et amortissements</p>
-              <p class="plafond">Plafond annuel: 4000 euros</p>
-            </div>
-            <div class="resume">
-              <div>
-                <p>Cashflow :</p><p class="casflow"></p>
-              </div>
-              <div>
-                <p>Impot :</p><p class="impot"></p>
-              </div>
-              <div>
-                <p class="simulation_year simulationbutton buttonBlue"> Simulation</p>
-              </div>
-            </div>
-          </div>
-        <div class="LMNP collapse padding-top">
-          <div class="tablelmnp simulation_amortissement"></div>
-          <div class="buttonBlue buttonCsv">Export</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="subcontainer">
-      <div id="resumemicrobic">
-        <div class="resumetitle">
-          <p class="title">Micro-BIC</p>
-        </div>
-         <div class="infos-deduction flex_container">
-            <div style="width: 40%">
-              <p class="deduction">Abbatement 50%</p>
-              <p class="plafond">Plafond annuel: 4000 euros</p>
-            </div>
-            <div class="resume">
-              <div>
-                <p>Cashflow :</p><p class="casflow"></p>
-              </div>
-              <div>
-                <p>Impot :</p><p class="impot"></p>
-              </div>
-              <div>
-                <p class="simulation_year simulationbutton buttonBlue"> Simulation</p>
-              </div>
-            </div>
-          </div>
-        <div class="microbic collapse padding-top">
-          <div class="tablemicro_bic simulation_abbatement"></div>
-          <div class="buttonBlue buttonCsv">Export</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="subcontainer">
-      <div id="resumemicrobictourisme">
-        <div class="resumetitle">
-          <p class="title">Micro-BIC-tourisme</p>
-        </div>
-       <div class="infos-deduction flex_container">
-          <div style="width: 40%">
-            <p class="deduction">Abbatement 70%</p>
-            <p class="plafond">Plafond annuel: 4000 euros</p>
-          </div>
-          <div class="resume">
-            <div>
-              <p>Cashflow :</p><p class="casflow"></p>
-            </div>
-            <div>
-              <p>Impot :</p><p class="impot"></p>
-            </div>
-            <div>
-              <p class="simulation_year simulationbutton buttonBlue"> Simulation</p>
-            </div>
-          </div>
-        </div>
-        <div class="microtourisme collapse padding-top">
-          <div class="tablemicro_tourisme simulation_abbatement"></div>
-          <div class="buttonBlue buttonCsv">Export</div>
-        </div>
-      </div>
-    </div>
-
-    <h1 class="section text-blue">Location Nue </h1>
-
-    <div class="subcontainer">
-      <div id="resumefoncierreel">
-        <div class="resumetitle">
-          <p class="title">Foncier réel</p>
-        </div>
-         <div class="infos-deduction flex_container">
-            <div style="width: 40%">
-              <p class="deduction">Deduction des charges et travaux</p>
-              <p class="plafond">Plafond annuel: 4000 euros</p>
-            </div>
-            <div class="resume">
-              <div>
-                <p>Cashflow :</p><p class="casflow"></p>
-              </div>
-              <div>
-                <p>Impot :</p><p class="impot"></p>
-              </div>
-              <div>
-                <p class="simulation_year simulationbutton buttonBlue"> Simulation</p>
-              </div>
-            </div>
-        </div>
-        <div class="Foncier_reel collapse padding-top">
-          <div class="tablefonciereel simulation_amortissement"></div>
-          <div class="buttonBlue buttonCsv">Export</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="subcontainer">
-      <div id="resumemicrofoncier">
-        <div class="resumetitle">
-          <p class="title">Micro Foncier</p>
-        </div>
-        <div class="infos-deduction flex_container">
-          <div style="width: 40%">
-            <p class="deduction">Abbatement 30%</p>
-            <p class="plafond">Plafond annuel: 4000 euros</p>
-          </div>
-          <div class="resume">
-            <div>
-              <p>Cashflow :</p><p class="casflow"></p>
-            </div>
-            <div>
-              <p>Impot :</p><p class="impot"></p>
-            </div>
-            <div>
-              <p class="simulation_year simulationbutton buttonBlue"> Simulation</p>
-            </div>
-          </div>
-        </div>
-        <div class="microfoncier collapse padding-top">
-          <div class="tablemicrofoncier simulation_abbatement"></div>
-          <div class="buttonBlue buttonCsv">Export</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="subcontainer">
-      <p>
-        Attention : Ces simulations sont des estimations. Nous vous conseillons de bien anticiper les charges/travaux et de consulter un comptable. Il existe
-        également d'autres régimes fiscals non abordés ici (SCI, deficit foncier ...) qui peuvent mieux correspondre à votre situation.
-      </p>
-    </div>
-  </div>
-</div>
-
-
-
-
   </body>
 </html>
