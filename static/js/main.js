@@ -161,16 +161,24 @@ $(document).ready(function() {
 
   var bank_input = document.querySelectorAll('.bank_input');
   var simulation_year = document.querySelectorAll('.simulation_year');
+  // var simulation_year = $( ".simulation_year")
+  console.log(simulation_year)
+
+// $( "html" ).parents()
 
   simulation_year.forEach(element => {
     element.addEventListener('click', (event) => {
       // to refracto
       var table = element.parentElement.parentElement.parentElement.parentElement.children[2];
-      table.classList.toggle("collapse");
+      // var table = element.parents(4).children[2];
+      var tables = element.closest('.subcontainer').querySelector(".padding-top");
+      // console.log(tables.querySelector(".padding-top"));
+
+      tables.classList.toggle("collapse");
     });
   });
-
 });
+
 
 
 function server_response(response) {
@@ -294,7 +302,7 @@ $(document).ready(function() {
                     Foncier_reel:JSON.stringify(Foncier_reel)
                   }
 
-      console.log(data)
+      // console.log(data)
 
       $.ajax({
           url: '/api',

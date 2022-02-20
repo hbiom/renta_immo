@@ -7,7 +7,6 @@ function acquisitionPriceExctractor(element, regime) {
     var amortissement = {}
 
     for (var i = 0; i < children.length; i++) {
-      console.log(children[i]); //second console output
       var cost_name = children[i].className;
       if (children[i].className == "Travaux") {
         var prix = parseInt(children[i].children[1].value)|| 0;
@@ -25,7 +24,6 @@ function acquisitionPriceExctractor(element, regime) {
     var amortissement = {}
 
     for (var i = 0; i < children.length; i++) {
-      console.log(children[i])
       var cost_name = children[i].className;
       var prix = parseInt(children[i].children[1].value)|| 0;
       var nbr_année = parseInt(children[i].children[3].value)|| 1;
