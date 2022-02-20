@@ -330,9 +330,9 @@
   border: 1px solid white; }
 
 @media (min-width: 815px) {
-  .buttonBlue {
+  .buttonCsv {
     margin-top: 10px; }
-  .buttonBlue:hover {
+  .buttonCsv:hover {
     margin-top: 10px; } }
 
 .kpi-section {

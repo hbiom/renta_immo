@@ -21,36 +21,12 @@
   border: 1px solid white;
 }
 
-// .simulationbutton {
-//   height: 20px;
-//   background-color: rgba(72, 99, 160,1);
-//   text-align: center;
-//   padding: 5px;
-//   border-radius: 5px;
-//   color: white;
-//   font-weight: bold;
-//   border: 1px solid white;
-//   margin-top:5px;
-// }
-
-// .simulationbutton:hover {
-//   height: 20px;
-//   background-color: rgba(72, 99, 160,0.5);
-//   text-align: center;
-//   padding: 5px;
-//   border-radius: 5px;
-//   color: white;
-//   font-weight: bold;
-//   border: 1px solid white;
-//   margin-top:5px;
-// }
-
 @media (min-width: 815px){
-  .buttonBlue {
+  .buttonCsv {
     margin-top:10px;
   }
 
-  .buttonBlue:hover {
+  .buttonCsv:hover {
     margin-top:10px;
   }
 }

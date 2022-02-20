@@ -21,7 +21,6 @@ app.wsgi_app = SassMiddleware(app.wsgi_app, {
 def callapi():
   if request.method == 'POST':
     print(request.get_json(force=True))
-    # print(request.json())
     data = request.get_json(force=True)
 
     if not data:
@@ -69,7 +68,6 @@ def callapi():
                       'microtourisme':microtourisme})
       print(json)
 
-    # # return the result to the ajax callback function
     return json
 
 

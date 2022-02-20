@@ -1,128 +1,8 @@
 import { acquisitionPriceExctractor } from './components/acquisitionPriceExctractor.js';
+import { obj2htmltable, downloadCSV, exportTableToCSV, downloadCSVButon } from './components/export_csv.js';
+import { kpi_display, animateValue } from './components/kpi_display.js';
+import { extractResume, colorValue } from './components/extract_value.js';
 
-
-function obj2htmltable(obj) {
-  //  creer une table HTML à partir d'un dico creer dans utils/simulation_amortissement ou simulation_abbatement
-  var cols = []
-  var html = '<table>';
-  html += '<tr>'
-  html += '<thead>'
-  for (var key in obj) {
-    var item = obj[key];
-      html += '<th>' + key + '</th>';
-    cols.push(item)
-    var dico_size = Object.keys(item).length - 1
-  };
-  html += '<tr>'
-  html += '</thead>'
-    for (let i =0; i <= dico_size; i++) {
-      html += '<tr>'
-      for (const element of cols) {
-        html += '<td>' + element[i] + '</td>';
-      }
-      html += '</tr>'
-    };
-  html += '</table>';
-  return html;
-};
-
-
-// adapted from https://www.codexworld.com/export-html-table-data-to-csv-using-javascript/#:~:text=JavaScript%20Code&text=The%20downloadCSV()%20function%20takes,data%20in%20a%20CSV%20file.&text=The%20exportTableToCSV()%20function%20creates,using%20the%20downloadCSV()%20function.
-function downloadCSV(csv, filename) {
-  // Télécharge table en csv
-  var csvFile;
-  var downloadLink;
-
-  // CSV file
-  csvFile = new Blob([csv], {type: "text/csv"});
-
-  // Download link
-  downloadLink = document.createElement("a");
-
-  // File name
-  downloadLink.download = filename;
-
-  // Create a link to the file
-  downloadLink.href = window.URL.createObjectURL(csvFile);
-
-  // Hide download link
-  downloadLink.style.display = "none";
-
-  // Add the link to DOM
-  document.body.appendChild(downloadLink);
-
-  // Click download link
-  downloadLink.click();
-}
-
-
-function exportTableToCSV(filename, table) {
-  // Télécharge table en csv
-  var csv = [];
-  var rows = table.querySelectorAll("table tr");
-
-  for (var i = 0; i < rows.length; i++) {
-    var row = [], cols = rows[i].querySelectorAll("td, th");
-
-    for (var j = 0; j < cols.length; j++)
-        row.push(cols[j].innerText);
-
-    csv.push(row.join(","));
-  }
-  // Download CSV file
-  downloadCSV(csv.join("\n"), filename);
-}
-
-function extractResume(obj, divElement) {
-  var cashflow = obj["Cashflow"][0];
-  var impot = obj["Impot"][0];
-
-  var classimpot = divElement.getElementsByClassName("impot")[0];
-  classimpot.innerHTML = impot
-
-  var classimpot = divElement.getElementsByClassName("casflow")[0];
-  classimpot.innerHTML = cashflow
-};
-
-function downloadCSVButon() {
-  var buttonCsv = document.querySelectorAll('.buttonCsv');
-  buttonCsv.forEach(element => {
-    element.addEventListener('click', (event) => {
-      var table = element.parentElement
-      var filename = table.className.split(" ")[0] + ".csv" ;
-      exportTableToCSV(filename, table)
-    });
-  });
-};
-
-
-
-function animateValue(kpiValue, start, duration) {
-  let startTimestamp = null;
-  kpiValue.forEach(element=> {
-    let end = parseInt(element.innerHTML)
-    let step = (timestamp) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      element.innerHTML = Math.floor(progress * (end - start) + start);
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      }
-    };
-  window.requestAnimationFrame(step);
-  })
-}
-
-function colorValue(value) {
-  var valueCashflow = parseInt(value.innerHTML)
-  if (valueCashflow < 0) {
-    value.classList.remove("green");
-    value.classList.add("red");
-  } else if (valueCashflow > 0) {
-    value.classList.remove("red");
-    value.classList.add("green");
-  }
-}
 
 $(document).ready(function() {
 
@@ -161,30 +41,18 @@ $(document).ready(function() {
 
   var bank_input = document.querySelectorAll('.bank_input');
   var simulation_year = document.querySelectorAll('.simulation_year');
-  // var simulation_year = $( ".simulation_year")
-  console.log(simulation_year)
-
-// $( "html" ).parents()
 
   simulation_year.forEach(element => {
     element.addEventListener('click', (event) => {
-      // to refracto
-      var table = element.parentElement.parentElement.parentElement.parentElement.children[2];
-      // var table = element.parents(4).children[2];
       var tables = element.closest('.subcontainer').querySelector(".padding-top");
-      // console.log(tables.querySelector(".padding-top"));
-
       tables.classList.toggle("collapse");
     });
   });
 });
 
 
-
 function server_response(response) {
-  // convert to json format
   var r = response
-
   var result_mensu = document.querySelector('.result_mensu');
   var result_prix = document.querySelector('.result_prix');
   var imposition = document.querySelector('#imposition');
@@ -234,26 +102,9 @@ function server_response(response) {
 }
 
 
-function kpi_display() {
-  $(window).on('scroll', function() {
-      var element_position = $('.kpi-section').offset().top -650;
-      var y_scroll_pos = window.pageYOffset;
-      var scroll_pos_test = element_position;
-
-      if(y_scroll_pos > scroll_pos_test) {
-        var kpiValue = document.querySelectorAll('.kpi-value');
-        animateValue(kpiValue, 0, 2000);
-        $(window).off("scroll");
-      }
-  });
-};
-
 
 $(document).ready(function() {
 
-
-  // AJAX
-  // you can verify the data in the browser console
   var compute = document.querySelectorAll('input');
 
   compute.forEach(item => {
@@ -279,14 +130,9 @@ $(document).ready(function() {
 
       var salaire_imposable = document.querySelector('.salaire_imposable').value || 0;
       var nbr_part = document.querySelector('.nbr_part').value || 1;
-
-
       var prix_acquisition = document.querySelector('.prix_acquisition');
-      // var Foncier_reel_value = document.querySelector('.Foncier_reel');
-
       var lmnp = acquisitionPriceExctractor(prix_acquisition, "LMNP")
       var Foncier_reel = acquisitionPriceExctractor(prix_acquisition, "foncier_reel")
-      // var microbic = document.querySelector('.microbic');
 
       var data = { prix_achat: prix_achat,
                     apport: apport,
@@ -302,7 +148,7 @@ $(document).ready(function() {
                     Foncier_reel:JSON.stringify(Foncier_reel)
                   }
 
-      // console.log(data)
+      console.log(data)
 
       $.ajax({
           url: '/api',
@@ -321,12 +167,5 @@ $(document).ready(function() {
   downloadCSVButon()
   kpi_display()
 });
-
-// Simulation Table
-var tablelmnp = document.querySelector('.tablelmnp');
-var tablefonciereel = document.querySelector('.tablefonciereel');
-var tablemicro_bic = document.querySelector('.tablemicro_bic');
-var tablemicrofoncier = document.querySelector('.tablemicrofoncier');
-var tablemicro_tourisme = document.querySelector('.tablemicro_tourisme');
 
 
